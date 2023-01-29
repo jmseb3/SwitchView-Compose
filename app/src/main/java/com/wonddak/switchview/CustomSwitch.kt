@@ -22,22 +22,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
-import com.wonddak.switchview.ui.theme.DefaultCheckColor
-import com.wonddak.switchview.ui.theme.DefaultUnCheckColor
+import com.wonddak.switchview.ui.theme.Default
+
 
 @Composable
 fun CustomSwitch(
     switchOn: Boolean = false,
-    width: Dp = 72.dp,
-    height: Dp = 40.dp,
-    checkedTrackColor: Color = DefaultCheckColor,
-    uncheckedTrackColor: Color = DefaultUnCheckColor,
-    gapBetweenThumbAndTrackEdge: Dp = 8.dp,
-    borderWidth: Dp = 2.dp,
-    cornerSize: Int = 50,
-    iconInnerPadding: Dp = 4.dp,
-    thumbSize: Dp = 24.dp,
+    width: Dp = Default.width,
+    height: Dp = Default.height,
+    checkedTrackColor: Color = Default.checkedTrackColor,
+    uncheckedTrackColor: Color = Default.uncheckedTrackColor,
+    gapBetweenThumbAndTrackEdge: Dp = Default.gapBetweenThumbAndTrackEdge,
+    borderWidth: Dp = Default.borderWidth,
+    cornerSize: Int = Default.cornerSize,
+    iconInnerPadding: Dp = Default.iconInnerPadding,
+    thumbSize: Dp = Default.thumbSize,
     updateAction: (switchOn: Boolean) -> Unit = {},
 ) {
     val interactionSource = remember { MutableInteractionSource() }

@@ -11,23 +11,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.wonddak.switchview.ui.theme.DefaultCheckColor
-import com.wonddak.switchview.ui.theme.DefaultUnCheckColor
+import com.wonddak.switchview.ui.theme.Default
 
 @Composable
 fun SectionSwitchView(
     section: String,
     description: String = "",
     switchOn: Boolean = false,
-    switchWidth: Dp = 72.dp,
-    switchHeight: Dp = 40.dp,
-    checkedColor: Color = DefaultCheckColor,
-    uncheckedColor: Color = DefaultUnCheckColor,
-    gapBetweenThumbAndTrackEdge: Dp = 8.dp,
-    borderWidth: Dp = 2.dp,
-    cornerSize: Int = 50,
-    iconInnerPadding: Dp = 4.dp,
-    thumbSize: Dp = 24.dp,
+    switchWidth: Dp = Default.width,
+    switchHeight: Dp = Default.height,
+    checkedColor: Color = Default.checkedTrackColor,
+    uncheckedColor: Color = Default.uncheckedTrackColor,
+    gapBetweenThumbAndTrackEdge: Dp = Default.gapBetweenThumbAndTrackEdge,
+    borderWidth: Dp = Default.borderWidth,
+    cornerSize: Int = Default.cornerSize,
+    iconInnerPadding: Dp = Default.iconInnerPadding,
+    thumbSize: Dp = Default.thumbSize,
     updateCheckAction: (check: Boolean) -> Unit = {},
 ) {
     Row(
@@ -73,7 +72,7 @@ fun SectionSwitchView(
 fun SectionSwitchViewPreview() {
     Column() {
         SectionSwitchView("test1")
-        SectionSwitchView("test2", "description for test2",true)
+        SectionSwitchView("test2", "description for test2", true)
     }
 
 }
