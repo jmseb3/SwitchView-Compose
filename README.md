@@ -24,7 +24,7 @@ implementation lastVersion
 ~~~groovy
 dependencies {
     ...
-    implementation("com.github.jmseb3:SwitchView-Compose:1.0.0")
+    implementation("com.github.jmseb3:SwitchView-Compose:2.0.0")
 }
 ~~~
 
