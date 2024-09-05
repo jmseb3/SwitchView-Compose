@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "switchView"
-include(":app")
+include(":switch")
