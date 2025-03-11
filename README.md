@@ -10,21 +10,11 @@ it replaced [**Switch**](https://developer.android.com/reference/kotlin/androidx
 
 ## how to implementation
 
-### settings.gradle
-add repositories **jitpack.io**
-~~~groovy
-repositories {
-    ...
-    maven { url 'https://jitpack.io' }
-}
-~~~
-
 ### build.gradle
 implementation lastVersion
 ~~~groovy
 dependencies {
-    ...
-    implementation("com.github.jmseb3:SwitchView-Compose:2.0.0")
+    implementation("io.github.jmseb3:switchView:1.0.0")
 }
 ~~~
 

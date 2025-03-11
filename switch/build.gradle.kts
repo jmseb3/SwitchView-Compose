@@ -1,3 +1,5 @@
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.KotlinMultiplatform
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -6,6 +8,8 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose)
     alias(libs.plugins.android.library)
+    id("com.vanniktech.maven.publish") version "0.31.0-rc2"
+    id("org.jetbrains.dokka")
 }
 
 kotlin {
@@ -13,8 +17,8 @@ kotlin {
         compilations.all {
             compileTaskProvider {
                 compilerOptions {
-                    jvmTarget.set(JvmTarget.JVM_1_8)
-                    freeCompilerArgs.add("-Xjdk-release=${JavaVersion.VERSION_1_8}")
+                    jvmTarget.set(JvmTarget.JVM_11)
+                    freeCompilerArgs.add("-Xjdk-release=${JavaVersion.VERSION_11}")
                 }
             }
         }
@@ -54,18 +58,39 @@ kotlin {
         }
     }
 }
+
 android {
     namespace = "com.wonddak.switchview"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 21
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
-    buildFeatures {
-        compose = true
+}
+
+dokka {
+    moduleName.set("Switch View")
+
+    dokkaPublications.html {
+        outputDirectory.set(project.mkdir("build/dokka"))
     }
+
+    dokkaSourceSets {
+        this.commonMain {
+            displayName.set("Common")
+        }
+    }
+}
+
+mavenPublishing {
+    configure(
+        KotlinMultiplatform(
+            javadocJar = JavadocJar.Dokka("dokkaGeneratePublicationHtml"),
+            sourcesJar = true
+        )
+    )
 }
